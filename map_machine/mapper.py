@@ -397,3 +397,8 @@ def render_map(arguments: argparse.Namespace) -> None:
     logging.info(f"Writing output SVG to {arguments.output_file_name}...")
     with open(arguments.output_file_name, "w", encoding="utf-8") as output_file:
         svg.write(output_file)
+
+        import cairosvg
+        # save a png 
+        cairosvg.svg2png(url=arguments.output_file_name, write_to=arguments.output_file_name.replace('.svg', '.png'))
+
